@@ -12,6 +12,10 @@ All the examples in this repository are hosted on my GitHub Pages. You can acces
 
 The first example demonstrates how to put the sun on an orbit using A-Frame and aframe-extras. You can view this example by clicking [here](https://erickwendel.github.io/webxr-studies/sun-orbit).
 
+### Erick's Trophy Gallery
+
+This project is located in the `/erick-trophy-gallery` directory. It's a working project of a trophy gallery that users can access and interact with. Like the other examples in this repository, it's hosted on GitHub Pages. You can view this project by clicking [here](https://erickwendel.github.io/webxr-studies/erick-trophy-gallery).
+
 ## Contributing
 
 Feel free to fork this repository and submit pull requests. Any contributions, no matter how small, are greatly appreciated.
