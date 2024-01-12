@@ -1,0 +1,21 @@
+# WebXR Studies
+
+Welcome to my WebXR studies repository. This repository contains various examples and experiments I've conducted while learning and exploring WebXR.
+
+## Accessing the Examples
+
+All the examples in this repository are hosted on my GitHub Pages. You can access them by visiting [https://erickwendel.github.io/webxr-studies/](https://erickwendel.github.io/webxr-studies/).
+
+## Examples
+
+### Sun Orbit
+
+The first example demonstrates how to put the sun on an orbit using A-Frame and aframe-extras. You can view this example by clicking [here](https://erickwendel.github.io/webxr-studies/sun-orbit).
+
+## Contributing
+
+Feel free to fork this repository and submit pull requests. Any contributions, no matter how small, are greatly appreciated.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.

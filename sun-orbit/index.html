@@ -1,0 +1,39 @@
+<html>
+
+<head>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-extras@^6.1.1/dist/aframe-extras.min.js"></script>
+
+</head>
+
+<body>
+
+  <a-scene background="color: #FAFAFA">
+
+    <a-assets>
+      <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+      <img id="skyTexture" src="./img/sky.jpeg">
+      <img id="sun" src="./img/sun.jpg">
+    </a-assets>
+    <a-curve id="sunPath">
+      <a-curve-point position="0 0 -40"></a-curve-point>
+      <a-curve-point position="40 0 0"></a-curve-point>
+      <a-curve-point position="0 0 40"></a-curve-point>
+      <a-curve-point position="-40 0 0"></a-curve-point>
+    </a-curve>
+
+    <a-sky src="#skyTexture"></a-sky>
+
+    <a-entity rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
+    <a-sphere src="#sun" position="0 0 -40" rotation="0 -40 0" radius="3"
+      alongpath="curve: #sunPath; dur: 20000; loop: true"
+      animation="property: object3D.rotation.y; to: 360; dur: 100; loop: true"></a-sphere>
+    </a-entity>
+
+
+
+  </a-scene>
+
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<html>
+
+<head>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-extras@^6.1.1/dist/aframe-extras.min.js"></script>
+</head>
+
+<body>
+  <a-scene renderer="colorManagement: true;" xr-mode-ui="XRMode: xr">
+    <a-assets>
+      <a-asset-item id="engine" src="models/gallery.glb"></a-asset-item>
+    </a-assets>
+
+    <a-entity rotation="0 -90 0" position="-5.5 -1 -4">
+      <a-camera look-controls></a-camera>
+    </a-entity>
+
+    <a-entity>
+      <a-gltf-model src="#engine" scale="0.01 0.01 0.01" animation-mixer></a-gltf-model>
+    </a-entity>
+
+  </a-scene>
+</body>
+
+</html>

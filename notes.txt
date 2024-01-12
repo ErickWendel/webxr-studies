@@ -1,0 +1,33 @@
+https://experiments.withgoogle.com/collection/webxr
+https://www.youtube.com/watch?v=ttDyimAk88Y
+https://www.youtube.com/watch?v=Sul61kSfMyU&list=PLV7e1PHOC13Gtifukt-ct8m0DJSNJsqj8
+https://immersive-web.github.io/webxr-samples/
+https://youtu.be/90z6hBjxP-M?si=98uEtBj5QhDt7Hu0
+
+https://www.jorgefuentes.net/projects/halloVReen/
+
+https://aframe.io/
+https://github.com/aframevr/aframe?tab=readme-ov-file
+https://github.com/goldfire/howler.js
+https://abhishekatnure.medium.com/create-vr-solar-system-with-a-frame-c9bbb591a98c
+
+https://github.com/sanderblue/solar-system-threejs
+https://www.freepik.com/free-photos-vectors/space-textures
+https://stackoverflow.com/a/75880263/4087199
+https://medium.com/samsung-internet-dev/vr-locomotion-740dafa85914
+https://sketchfab.com/tags/glb
+
+https://sketchfab.com/3d-models/the-upper-vestibule-e74928dc62fe457892e52dd97b6aa6e0#download
+https://sketchfab.com/3d-models/gallery-3-fitz-favourites-07a83971260648348a43bace2b049050
+https://sketchfab.com/3d-models/the-picture-gallery-231fdb3e9e354c6faaa3c250f8c9988f
+https://sketchfab.com/3d-models/gallery-3-fitz-favourites-07a83971260648348a43bace2b049050
+
+
+trophy-gallery
+    - erick wendel sound in
+        - the background in loop
+            - depending on what section of the museum, play a sound
+    - scene - museum
+    - walls with boards with different images
+        - click, open details such as robocop
+
