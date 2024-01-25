@@ -130,7 +130,7 @@ function init3D() {
   scene.add(backgroundMesh);
 
   const loader = new GLTFLoader();
-  loader.load('./../models/sticker.glb', function (gltf) {
+  loader.load('./models/sticker.glb', function (gltf) {
 
     scene.add(gltf.scene);
 
