@@ -28,6 +28,7 @@ https://ambientcg.com/
 
 https://youtu.be/nUIrnBaGDCg?si=FXcs-oYYL2tdTskY
 https://webxr.tools/
+https://medium.com/samsung-internet-dev/making-an-ar-game-with-aframe-529e03ae90cb
 
 trophy-gallery
     - erick wendel sound in

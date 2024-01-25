@@ -9,13 +9,12 @@
 </head>
 
 <body style='margin : 0px; overflow: hidden;'>
-    <a-scene embedded arjs>
+    <a-scene renderer="colorManagement: true;" xr-mode-ui="XRMode: xr">
         <a-assets>
             <a-asset-item id="tv-model" src="./assets/tv/tv.gltf"></a-asset-item>
         </a-assets>
-        <!-- <a-entity id="modelEntity"></a-entity> -->
+        <a-entity id="objectName"></a-entity>
         <a-gltf-model id="modelEntity"></a-gltf-model>
-        <a-marker-camera></a-marker-camera>
     </a-scene>
     <video autoplay id="video"></video>
     <script type="module">
@@ -31,6 +30,7 @@
         // const boxEntity = document.createElement('a-box');
         // const lineEntity = document.createElement('a-entity');
         const modelEntity = document.getElementById('modelEntity');
+        const objectNameEntity = document.getElementById('objectName');
         // const modelEntity = document.createElement('a-gltf-model');
         // scene.appendChild(modelEntity);
 
@@ -43,8 +43,8 @@
             const predictions = await model.detect(video)
             for (const prediction of predictions) {
                 // if (prediction.class !== 'tv' && prediction.class !== 'person')
-                if (prediction.class !== 'tv')
-                    continue
+                // if (prediction.class !== 'tv')
+                //     continue
                 const x = (prediction.bbox[0] + prediction.bbox[2] / 2) / video.videoWidth * 2 - 1
                 const y = 1.5;
 
@@ -54,18 +54,18 @@
                 const scaleY = prediction.bbox[3] / video.videoHeight * 1;
                 const scaleZ = 1;  // Set this to the desired depth of the entity
 
-                modelEntity.setAttribute('src', '#tv-model');  // Refer to the preloaded model
-                modelEntity.setAttribute('position', { x, y, z: -1 });
-                modelEntity.setAttribute('scale', { x: scaleX, y: scaleY, z: scaleZ });
+                // modelEntity.setAttribute('src', '#tv-model');  // Refer to the preloaded model
+                // modelEntity.setAttribute('position', { x, y, z: -1 });
+                // modelEntity.setAttribute('scale', { x: scaleX, y: scaleY, z: scaleZ });
 
                 // entity.setAttribute('scale', { x: scaleX, y: scaleY, z: scaleZ });
 
 
-                // entity.setAttribute(
-                //     'text',
-                //     `value: ${prediction.class.toUpperCase()}; color: white; align: center; width: 2; height: 2;`
-                // );
-                // entity.setAttribute('position', { x, y, z });
+                objectNameEntity.setAttribute(
+                    'text',
+                    `value: ${prediction.class.toUpperCase()}; color: white; align: center; width: 2; height: 2;`
+                );
+                objectNameEntity.setAttribute('position', { x, y, z });
 
 
                 // // Create box entity
