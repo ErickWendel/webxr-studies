@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,16 @@
   <title>Camera Filters</title>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.2"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix@2.0"></script>
-
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.151.3/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.151.3/examples/jsm/"
+      }
+    }
+  </script>
   <!-- Remove this when import maps will be widely supported -->
-  <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+  <!-- <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
 
   <script type="importmap">
     {
@@ -18,13 +26,14 @@
         "three/addons/": "./node_modules/three/examples/jsm/"
       }
     }
-  </script>
+  </script> -->
 
   <style>
     .container {
       position: relative;
       width: 100%;
     }
+
     canvas,
     video {
       max-width: 100%;
@@ -32,6 +41,7 @@
       position: absolute;
       /* opacity: 0.4; */
     }
+
     video {
       transform: scaleX(-1);
     }
@@ -47,4 +57,5 @@
   <script type="module" src="js/main.js"></script>
 
 </body>
+
 </html>

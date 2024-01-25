@@ -1,7 +1,4 @@
 {
-  "dependencies": {
-    "three": "^0.151.3"
-  },
   "name": "camera-filters",
   "description": "",
   "version": "0.0.1",
@@ -12,5 +9,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^3.0.2"
+  }
 }
