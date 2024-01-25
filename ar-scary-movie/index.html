@@ -13,27 +13,31 @@
         <a-assets>
             <a-asset-item id="tv-model" src="./assets/tv/tv.gltf"></a-asset-item>
         </a-assets>
-        <!-- <a-marker-camera preset='hiro'></a-marker-camera> -->
+        <!-- <a-entity id="modelEntity"></a-entity> -->
+        <a-gltf-model id="modelEntity"></a-gltf-model>
+        <a-marker-camera></a-marker-camera>
     </a-scene>
     <video autoplay id="video"></video>
     <script type="module">
         const video = document.getElementById('video');
         const scene = document.querySelector('a-scene');
-        const model = await cocoSsd.load();
 
         const stream = await navigator.mediaDevices.getUserMedia({ video: true })
         video.srcObject = stream;
 
+        const model = await cocoSsd.load();
+
         // const entity = document.createElement('a-entity');
         // const boxEntity = document.createElement('a-box');
         // const lineEntity = document.createElement('a-entity');
-        const modelEntity = document.createElement('a-gltf-model');
+        const modelEntity = document.getElementById('modelEntity');
+        // const modelEntity = document.createElement('a-gltf-model');
+        // scene.appendChild(modelEntity);
 
 
         // scene.appendChild(entity);
         // scene.appendChild(boxEntity);
         // scene.appendChild(lineEntity);
-        scene.appendChild(modelEntity);
 
         async function detectFrame(video, model) {
             const predictions = await model.detect(video)
