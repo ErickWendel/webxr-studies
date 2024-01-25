@@ -16,6 +16,9 @@ The first example demonstrates how to put the sun on an orbit using A-Frame and 
 
 This project is located in the `/erick-trophy-gallery` directory. It's a working project of a trophy gallery that users can access and interact with. Like the other examples in this repository, it's hosted on GitHub Pages. You can view this project by clicking [here](https://erickwendel.github.io/webxr-studies/erick-trophy-gallery).
 
+
+## AR Scary Movie Powered by ML
+This project is in the `/ar-scary-movie` directory. It's a working project of a AR experience that recognizes TVs and place a 3D model on that.  You can view this project by clicking [here](https://erickwendel.github.io/webxr-studies/ar-scary-movie).
 ## Contributing
 
 Feel free to fork this repository and submit pull requests. Any contributions, no matter how small, are greatly appreciated.
