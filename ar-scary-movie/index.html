@@ -16,7 +16,7 @@
         <a-entity id="objectName"></a-entity>
         <a-gltf-model id="modelEntity"></a-gltf-model>
     </a-scene>
-    <video autoplay id="video"></video>
+    <video autoplay width="800" id="video"></video>
     <script type="module">
         const video = document.getElementById('video');
         const scene = document.querySelector('a-scene');
@@ -24,7 +24,7 @@
         const stream = await navigator.mediaDevices.getUserMedia({ video: true })
         video.srcObject = stream;
 
-        const model = await cocoSsd.load();
+        let model;
 
         // const entity = document.createElement('a-entity');
         // const boxEntity = document.createElement('a-box');
@@ -78,7 +78,20 @@
             }
         }
 
-        setInterval(() => detectFrame(video, model), 100)
+        const intervalId = setInterval(async () => {
+            try {
+
+                if (!model) {
+                    model = await cocoSsd.load()
+                }
+
+                await detectFrame(video, model)
+            } catch (error) {
+                clearInterval(intervalId)
+                const msg = `error: ${error.message}`
+                window.alert(msg)
+            }
+        }, 100)
     </script>
 </body>
 
