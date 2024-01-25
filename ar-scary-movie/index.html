@@ -10,10 +10,12 @@
 
 <body style='margin : 0px; overflow: hidden;'>
     <a-scene embedded arjs>
+        <a-assets>
+            <a-asset-item id="tv-model" src="./assets/tv/tv.gltf"></a-asset-item>
+        </a-assets>
         <!-- <a-marker-camera preset='hiro'></a-marker-camera> -->
     </a-scene>
-    <video autoplay id="video" style="display: none;"></video>
-    <canvas id="canvas"></canvas>
+    <video autoplay id="video"></video>
     <script type="module">
         const video = document.getElementById('video');
         const scene = document.querySelector('a-scene');
@@ -22,13 +24,16 @@
         const stream = await navigator.mediaDevices.getUserMedia({ video: true })
         video.srcObject = stream;
 
-        const entity = document.createElement('a-entity');
-        const boxEntity = document.createElement('a-box');
-        const lineEntity = document.createElement('a-entity');
+        // const entity = document.createElement('a-entity');
+        // const boxEntity = document.createElement('a-box');
+        // const lineEntity = document.createElement('a-entity');
+        const modelEntity = document.createElement('a-gltf-model');
 
-        scene.appendChild(entity);
-        scene.appendChild(boxEntity);
-        scene.appendChild(lineEntity);
+
+        // scene.appendChild(entity);
+        // scene.appendChild(boxEntity);
+        // scene.appendChild(lineEntity);
+        scene.appendChild(modelEntity);
 
         async function detectFrame(video, model) {
             const predictions = await model.detect(video)
@@ -45,23 +50,27 @@
                 const scaleY = prediction.bbox[3] / video.videoHeight * 1;
                 const scaleZ = 1;  // Set this to the desired depth of the entity
 
-                entity.setAttribute('scale', { x: scaleX, y: scaleY, z: scaleZ });
+                modelEntity.setAttribute('src', '#tv-model');  // Refer to the preloaded model
+                modelEntity.setAttribute('position', { x, y, z: -1 });
+                modelEntity.setAttribute('scale', { x: scaleX, y: scaleY, z: scaleZ });
+
+                // entity.setAttribute('scale', { x: scaleX, y: scaleY, z: scaleZ });
 
 
-                entity.setAttribute(
-                    'text',
-                    `value: ${prediction.class.toUpperCase()}; color: white; align: center; width: 2; height: 2;`
-                );
-                entity.setAttribute('position', { x, y, z });
+                // entity.setAttribute(
+                //     'text',
+                //     `value: ${prediction.class.toUpperCase()}; color: white; align: center; width: 2; height: 2;`
+                // );
+                // entity.setAttribute('position', { x, y, z });
 
 
-                // Create box entity
-                boxEntity.setAttribute('position', { x, y, z: -1 });
-                boxEntity.setAttribute('width', 0.5);
-                boxEntity.setAttribute('height', 0.5);
-                boxEntity.setAttribute('depth', 0.5);
-                boxEntity.setAttribute('material', 'color: white; opacity: 0.5');
-                boxEntity.setAttribute('scale', { x: scaleX, y: scaleY, z: scaleZ });
+                // // Create box entity
+                // boxEntity.setAttribute('position', { x, y, z: -1 });
+                // boxEntity.setAttribute('width', 0.5);
+                // boxEntity.setAttribute('height', 0.5);
+                // boxEntity.setAttribute('depth', 0.5);
+                // boxEntity.setAttribute('material', 'color: white; opacity: 0.5');
+                // boxEntity.setAttribute('scale', { x: scaleX, y: scaleY, z: scaleZ });
             }
         }
 
