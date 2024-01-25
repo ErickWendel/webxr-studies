@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "three": "^0.151.3"
+  },
+  "name": "camera-filters",
+  "description": "",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx browser-sync start --server --files --https \"**/*.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
