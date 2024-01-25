@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>AR.js demo</title>
+    <!-- <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script> -->
+    <!-- <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+     -->
+    <!-- Load TensorFlow.js. This is required to use coco-ssd model. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
+    <!-- Load the coco-ssd model. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"> </script>
+
+    <style>
+        #container {
+            position: relative;
+            width: 800px;
+        }
+
+        #img,
+        #canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="container">
+        <img id="overlay" src="./assets/dbz.webp" style="position: absolute; display: none; z-index: 2">
+        <img id="img" width="800" src="./assets/room.jpeg">
+        <canvas id="canvas"></canvas>
+    </div>
+    <!-- <video autoplay id="video"></video> -->
+    <!-- <canvas id="canvas"></canvas> -->
+
+    <!-- Place your code in the script tag below. You can also use an external .js file -->
+    <script type="module">
+        // Notice there is no 'import' statement. 'mobilenet' and 'tf' is
+        // available on the index-page because of the script tag above.
+
+        const img = document.getElementById('img');
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+        const overlay = document.getElementById('overlay');
+
+        function drawPredictions(predictions) {
+            // Clear the canvas
+            canvas.width = img.width;
+            canvas.height = img.height;
+            // debugger
+
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw the bounding box for each prediction
+            for (const prediction of predictions) {
+                if (prediction.class !== 'tv') return;
+
+                // Position the overlay image over the detected TV
+                overlay.style.left = `${prediction.bbox[0]}px`;
+                overlay.style.top = `${prediction.bbox[1]}px`;
+                overlay.style.width = `${prediction.bbox[2]}px`;
+                overlay.style.height = `${prediction.bbox[3]}px`;
+                overlay.style.display = 'block';
+
+                context.beginPath();
+                context.rect(
+                    prediction.bbox[0],
+                    prediction.bbox[1],
+                    prediction.bbox[2],
+                    prediction.bbox[3]
+                );
+                context.lineWidth = 2;
+                context.strokeStyle = 'red';
+                context.fillStyle = 'red';
+                context.stroke();
+                context.fillText(
+                    `${prediction.class} (${Math.round(prediction.score * 100)}%)`,
+                    prediction.bbox[0],
+                    prediction.bbox[1] > 10 ? prediction.bbox[1] - 5 : 10
+                );
+            };
+        }
+        // Load the model.
+        const model = await cocoSsd.load()
+        // detect objects in the image.
+        const predictions = await model.detect(img)
+        console.log('Predictions: ', predictions);
+        drawPredictions(predictions);
+
+
+
+    </script>
+</body>
+
+</html>

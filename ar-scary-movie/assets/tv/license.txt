@@ -1,0 +1,11 @@
+Model Information:
+* title:	Tv
+* source:	https://sketchfab.com/3d-models/tv-928c4eb3c875463bbde6fda85b7d8b3a
+* author:	Algirdas Lalys (https://sketchfab.com/alalys)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Tv" (https://sketchfab.com/3d-models/tv-928c4eb3c875463bbde6fda85b7d8b3a) by Algirdas Lalys (https://sketchfab.com/alalys) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

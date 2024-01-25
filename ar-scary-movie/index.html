@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.5/aframe/build/aframe-ar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+</head>
+
+<body style='margin : 0px; overflow: hidden;'>
+    <a-scene embedded arjs>
+        <!-- <a-marker-camera preset='hiro'></a-marker-camera> -->
+    </a-scene>
+    <video autoplay id="video" style="display: none;"></video>
+    <canvas id="canvas"></canvas>
+    <script type="module">
+        const video = document.getElementById('video');
+        const scene = document.querySelector('a-scene');
+        const model = await cocoSsd.load();
+
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true })
+        video.srcObject = stream;
+
+        const entity = document.createElement('a-entity');
+        const boxEntity = document.createElement('a-box');
+        const lineEntity = document.createElement('a-entity');
+
+        scene.appendChild(entity);
+        scene.appendChild(boxEntity);
+        scene.appendChild(lineEntity);
+
+        async function detectFrame(video, model) {
+            const predictions = await model.detect(video)
+            for (const prediction of predictions) {
+                // if (prediction.class !== 'tv' && prediction.class !== 'person')
+                if (prediction.class !== 'tv')
+                    continue
+                const x = (prediction.bbox[0] + prediction.bbox[2] / 2) / video.videoWidth * 2 - 1
+                const y = 1.5;
+
+                const z = -1
+
+                const scaleX = prediction.bbox[2] / video.videoWidth * 1;
+                const scaleY = prediction.bbox[3] / video.videoHeight * 1;
+                const scaleZ = 1;  // Set this to the desired depth of the entity
+
+                entity.setAttribute('scale', { x: scaleX, y: scaleY, z: scaleZ });
+
+
+                entity.setAttribute(
+                    'text',
+                    `value: ${prediction.class.toUpperCase()}; color: white; align: center; width: 2; height: 2;`
+                );
+                entity.setAttribute('position', { x, y, z });
+
+
+                // Create box entity
+                boxEntity.setAttribute('position', { x, y, z: -1 });
+                boxEntity.setAttribute('width', 0.5);
+                boxEntity.setAttribute('height', 0.5);
+                boxEntity.setAttribute('depth', 0.5);
+                boxEntity.setAttribute('material', 'color: white; opacity: 0.5');
+                boxEntity.setAttribute('scale', { x: scaleX, y: scaleY, z: scaleZ });
+            }
+        }
+
+        setInterval(() => detectFrame(video, model), 100)
+    </script>
+</body>
+
+</html>
