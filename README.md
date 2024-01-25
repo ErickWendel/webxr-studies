@@ -19,6 +19,10 @@ This project is located in the `/erick-trophy-gallery` directory. It's a working
 
 ## AR Scary Movie Powered by ML
 This project is in the `/ar-scary-movie` directory. It's a working project of a AR experience that recognizes TVs and place a 3D model on that.  You can view this project by clicking [here](https://erickwendel.github.io/webxr-studies/ar-scary-movie).
+
+## Camera Filter Powered by ML
+You can view this project by clicking [here](https://erickwendel.github.io/webxr-studies/camera-filters).
+
 ## Contributing
 
 Feel free to fork this repository and submit pull requests. Any contributions, no matter how small, are greatly appreciated.
